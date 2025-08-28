@@ -14,6 +14,11 @@ class Absensi extends Model
         'check_out',
         'status_kedatangan',
     ];
+      protected $casts = [
+        'date' => 'date',
+        'check_in' => 'datetime',
+        'check_out' => 'datetime',
+    ];
     public function karyawan()
     {
         return $this->belongsTo(Karyawan::class);

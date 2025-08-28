@@ -18,6 +18,11 @@ const mainNavItems: NavItem[] = [
         href: '/karyawan',
         icon: UserRound,
     },
+    {
+        title: 'Data Laporan Harian',
+        href: '/laporanharian',
+        icon: BookOpen,
+    },
 ];
 
 const footerNavItems: NavItem[] = [

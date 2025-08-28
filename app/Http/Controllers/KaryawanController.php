@@ -14,7 +14,7 @@ class KaryawanController extends Controller
     public function index()
     {
         $karyawan = Karyawan::all();
-        return Inertia::render('Karyawan/index', [
+        return Inertia::render('Admin/Karyawan/index', [
             'karyawan' => $karyawan
         ]);
     }
@@ -24,7 +24,7 @@ class KaryawanController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Karyawan/create');
+        return Inertia::render('Admin/Karyawan/create');
     }
 
     /**
@@ -85,7 +85,7 @@ class KaryawanController extends Controller
      */
     public function edit(Karyawan $karyawan)
     {
-        return Inertia::render('Karyawan/edit', [
+        return Inertia::render('Admin/Karyawan/edit', [
             'karyawan' => $karyawan
         ]);
     }
