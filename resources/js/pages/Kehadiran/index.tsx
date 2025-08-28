@@ -65,7 +65,6 @@ export default function Kehadiran() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      {/* Header */}
       <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-700/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -83,11 +82,8 @@ export default function Kehadiran() {
           </div>
         </div>
       </div>
-
-      {/* Main Content */}
       <div className="flex items-center justify-center px-4 py-12">
         <div className="w-full max-w-md space-y-6">
-          {/* Date Card */}
           <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-lg">
             <CardContent className="p-4">
               <div className="flex items-center justify-center space-x-3">
@@ -99,8 +95,6 @@ export default function Kehadiran() {
               </div>
             </CardContent>
           </Card>
-
-          {/* Main Form Card */}
           <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border-0 shadow-xl">
             <CardHeader className="text-center pb-4">
               <div className="mx-auto mb-4 p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full w-fit">
@@ -131,7 +125,6 @@ export default function Kehadiran() {
                     className="h-12 text-center text-lg font-mono tracking-wider border-2 focus:border-blue-500 transition-all duration-200"
                   />
                 </div>
-
                 <Button 
                   type="submit" 
                   className="w-full h-12 text-lg font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50"
@@ -150,8 +143,6 @@ export default function Kehadiran() {
                   )}
                 </Button>
               </form>
-
-              {/* Status Indicators */}
               <div className="flex items-center justify-center space-x-4 pt-6 mt-6 border-t border-gray-200 dark:border-gray-700">
                 <div className="flex items-center space-x-2 text-sm">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>

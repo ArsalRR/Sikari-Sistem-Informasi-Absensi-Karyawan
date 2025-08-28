@@ -37,21 +37,6 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
 import { type BreadcrumbItem } from '@/types';
 
-interface Karyawan {
-  id: number;
-  no_kerja: string;
-  nama: string;
-  nama_lengkap: string;
-  no_hp: string;
-  alamat: string;
-  jabatan: string;
-  departemen: string;
-  gaji: number;
-  status: string;
-  created_at?: string;
-  updated_at?: string;
-}
-
 interface EditProps {
   karyawan: Karyawan;
 }
@@ -66,7 +51,8 @@ export default function Edit() {
 
   const { data, setData, put, processing, errors, wasSuccessful } = useForm<{
     no_kerja: string;
-    nama: string;
+    jam_masuk: string;
+    jam_pulang: string;
     nama_lengkap: string;
     no_hp: string;
     alamat: string;
@@ -76,9 +62,10 @@ export default function Edit() {
     status: string;
   }>({
     no_kerja: karyawan.no_kerja ?? "",
-    nama: karyawan.nama ?? "",
     nama_lengkap: (karyawan as Karyawan).nama_lengkap ?? "",
     no_hp: karyawan.no_hp ?? "",
+    jam_masuk: karyawan.jam_masuk ?? "",
+    jam_pulang: karyawan.jam_pulang ?? "",
     alamat: karyawan.alamat ?? "",
     jabatan: karyawan.jabatan ?? "",
     departemen: karyawan.departemen ?? "",
@@ -109,7 +96,7 @@ export default function Edit() {
 
   return (
     <AppLayout breadcrumbs={breadcrumbs}>
-      <Head title={`Edit Karyawan - ${karyawan.nama} - Sikari`} />
+      <Head title={`Edit Karyawan - ${karyawan.nama_lengkap} - Sikari`} />
 
       <div className="space-y-6">
         {/* Header */}
@@ -131,18 +118,6 @@ export default function Edit() {
           </div>
           <Badge variant="outline">ID: {karyawan.id}</Badge>
         </div>
-
-        {/* Success Alert */}
-        {wasSuccessful && (
-          <Alert className="border-green-200 bg-green-50">
-            <CheckCircle className="h-4 w-4 text-green-600" />
-            <AlertDescription className="text-green-800">
-              Data karyawan berhasil diperbarui!
-            </AlertDescription>
-          </Alert>
-        )}
-
-        {/* Main Form */}
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -164,7 +139,6 @@ export default function Edit() {
                 <Separator />
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* No Kerja */}
                   <div className="space-y-2">
                     <Label htmlFor="no_kerja" className="text-sm font-medium">
                       No Kerja <span className="text-red-500">*</span>
@@ -176,12 +150,14 @@ export default function Edit() {
                         onChange={e => setData("no_kerja", e.target.value)}
                         placeholder="EMP-000001"
                         className={errors.no_kerja ? "border-red-500" : ""}
+                        disabled
                       />
                       <Button
                         type="button"
                         variant="outline"
                         size="sm"
                         onClick={generateNoKerja}
+                        disabled
                       >
                         <RefreshCw className="h-4 w-4" />
                       </Button>
@@ -193,28 +169,7 @@ export default function Edit() {
                       </p>
                     )}
                   </div>
-
-                  {/* Nama */}
-                  <div className="space-y-2">
-                    <Label htmlFor="nama" className="text-sm font-medium">
-                      Nama <span className="text-red-500">*</span>
-                    </Label>
-                    <Input
-                      id="nama"
-                      value={data.nama}
-                      onChange={e => setData("nama", e.target.value)}
-                      placeholder="John"
-                      className={errors.nama ? "border-red-500" : ""}
-                    />
-                    {errors.nama && (
-                      <p className="flex items-center gap-1 text-sm text-red-600">
-                        <AlertCircle className="h-3 w-3" />
-                        {errors.nama}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Nama Lengkap */}
+              
                   <div className="space-y-2">
                     <Label htmlFor="nama_lengkap" className="text-sm font-medium">
                       Nama Lengkap <span className="text-red-500">*</span>
@@ -233,7 +188,42 @@ export default function Edit() {
                       </p>
                     )}
                   </div>
-
+                   <div className="space-y-2">
+                    <Label htmlFor="jam_masuk" className="text-sm font-medium">
+                      Jam Masuk <span className="text-red-500">*</span>
+                    </Label>
+                    <Input
+                      id="jam_masuk"
+                      value={data.jam_masuk}
+                      onChange={e => setData("jam_masuk", e.target.value)}
+                      placeholder="08:00"
+                      className={errors.jam_masuk ? "border-red-500" : ""}
+                    />
+                    {errors.jam_masuk && (
+                      <p className="flex items-center gap-1 text-sm text-red-600">
+                        <AlertCircle className="h-3 w-3" />
+                        {errors.jam_masuk}
+                      </p>
+                    )}
+                  </div>
+ <div className="space-y-2">
+                    <Label htmlFor="jam_masuk" className="text-sm font-medium">
+                      Jam Masuk <span className="text-red-500">*</span>
+                    </Label>
+                    <Input
+                      id="jam_pulang"
+                      value={data.jam_pulang}
+                      onChange={e => setData("jam_pulang", e.target.value)}
+                      placeholder="08:00"
+                      className={errors.jam_pulang ? "border-red-500" : ""}
+                    />
+                    {errors.jam_pulang && (
+                      <p className="flex items-center gap-1 text-sm text-red-600">
+                        <AlertCircle className="h-3 w-3" />
+                        {errors.jam_pulang}
+                      </p>
+                    )}
+                  </div>
                   {/* No HP */}
                   <div className="space-y-2">
                     <Label htmlFor="no_hp" className="text-sm font-medium">
